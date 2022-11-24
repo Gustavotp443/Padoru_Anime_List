@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import api from '../../services/api'
 import Loading from '../../components/Loading'
 import AnimeNotFound from '../../components/AnimeNotFound'
+import { Link } from 'react-router-dom'
 
 
 const Main = () => {
@@ -15,6 +16,8 @@ const Main = () => {
   const [animeData, setAnimeData] = useState<any>([]);
   const [offset, setOffset] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
+  const [limit, setLimit] = useState<number>(20);
+  const [total, setTotal] = useState<number>()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
@@ -35,17 +38,17 @@ const Main = () => {
       setLoading(true);
       try {
         let response;
-        { search ? response = await api.get(`/anime?filter[text]=${search}&page[limit]=20&page[offset]=0`) : response = await api.get(`/anime?page[limit]=20&page[offset]=${offset}`) }
-        const { data } = response.data
-        console.log(data)
+        { search ? response = await api.get(`/anime?filter[text]=${search}&page[limit]=${limit}&page[offset]=${offset}`) : response = await api.get(`/anime?page[limit]=${limit}&page[offset]=${offset}`) }
+        const { data, meta } = response.data
         setAnimeData(data)
+        setTotal(parseInt(meta.count))
       } catch (err) {
         alert("Erro de carregamento:" + err)
       }
       setLoading(false)
     }
     getAllAnimes()
-  }, [search, offset])
+  }, [search, offset, total, limit])
 
   return (
     <MainContainer>
@@ -61,7 +64,11 @@ const Main = () => {
         {loading && <Loading />}
         <CardWrapper>
           {animeData.map((anime: any) => (
-            <li key={anime.id}><Card anime={anime} /></li>
+            <li key={anime.id}>
+              <Link to={`/anime/${anime.id}`}>
+                <Card anime={anime} />
+              </Link>
+            </li>
           )
           )}
         </CardWrapper>
@@ -70,13 +77,11 @@ const Main = () => {
         }
         {animeData.length > 0 &&
           <>
-            <button onClick={prevOffset}>Prev</button>
-            <button onClick={nextOffset}>Next</button>
+            <Pagination eventNext={nextOffset} eventPrev={prevOffset} limit={limit} offset={offset} total={total} />
           </>
         }
-        <Pagination />
       </>
-    </MainContainer>
+    </MainContainer >
   )
 }
 

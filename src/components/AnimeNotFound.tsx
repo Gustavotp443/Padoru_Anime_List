@@ -5,7 +5,7 @@ const AnimeNotFound = () => {
   return (
     <NotFoundContainer>
       <NotFoundText>Nada encontrado ! </NotFoundText>
-      <NotFoundImage src='images/Nothing.png' />
+      <NotFoundImage src='/images/Nothing.png' />
       <NotFoundText>Certifique-se de estar digitando corretamente. </NotFoundText>
     </NotFoundContainer>
   )
