@@ -1,6 +1,6 @@
 import styled, { StyledComponent, StyledComponentBase } from "styled-components";
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 type Click = {
   click: boolean;
@@ -16,7 +16,7 @@ export const NavContainer = styled.div`
   width: 100%;
 
 
-`
+`;
 
 export const Nav = styled.ul`
   background-color: ${props => props.theme.colors.secondary};
@@ -36,7 +36,7 @@ export const Nav = styled.ul`
 @media screen and (max-width:768px){
   width: 110vw;
 }
-`
+`;
 export const MobileIcon = styled.div<Click>`
 font-size: 1.8em;
 cursor: pointer;
@@ -45,11 +45,11 @@ z-index: 999;
 transition:  1.1s ease;
 transform: ${({ click }) => (click ? "translateX(60%)" : "translateX(0) ")};
 
-  `
+  `;
 
 export const LinkNav = styled(Link)`
- transform: translateY(20vh);
+ transform: translateY(30vh);
  text-decoration: none;
  color: inherit;
 
-  `
+  `;

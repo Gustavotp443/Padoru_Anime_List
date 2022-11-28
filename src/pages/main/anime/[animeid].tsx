@@ -1,56 +1,59 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import Loading from '../../../components/Loading';
-import api from '../../../services/api';
-import { AnimePageContainer, TopWrapper, AnimeBanner, Title, AnimeBannerWrapper, DetailedScore, Score, Sinopsis, MoreDetails, MoreDetailsText, MoreDetailsWrapper } from './animeid.styles';
+import React, { memo, useEffect, useState, useCallback } from "react";
+import { useParams } from "react-router-dom";
+import ComebackButton from "../../../components/BackButton";
+import FavoriteButton from "../../../components/Favorite";
+import Loading from "../../../components/Loading";
+import api from "../../../services/api";
+import { AnimePageContainer, TopWrapper, AnimeBanner, Title, AnimeBannerWrapper, DetailedScore, Score, Sinopsis, MoreDetails, MoreDetailsText, Favorite, BottomWrapper, MFwrapper } from "./animeid.styles";
 
 
 
 const AnimePage: React.FC = () => {
 
 
-  const [anime, setAnime] = useState<any>([])
+  const [anime, setAnime] = useState<any>([]);
   const { id } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
-  const [animeImage, setAnimeImage] = useState<any>([])
+  const [animeImage, setAnimeImage] = useState<any>([]);
   const [details, setDetails] = useState<boolean>(false);
 
 
 
 
-  async function getData() {
-    setLoading(true)
+  const getData = useCallback(async function () {
+    setLoading(true);
     try {
-      const response = await api.get(`/anime/${id}`)
-      const { data } = response.data
-      const { attributes } = data
-      const { posterImage } = attributes
+      const response = await api.get(`/anime/${id}`);
+      const { data } = response.data;
+      const { attributes } = data;
+      const { posterImage } = attributes;
 
-      setAnime(attributes)
-      setAnimeImage(posterImage)
+      setAnime(attributes);
+      setAnimeImage(posterImage);
 
     } catch (err) {
-      alert("Erro de carregamento:" + err)
+      alert("Erro de carregamento:" + err);
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  }, [id]);
+
 
   useEffect(() => {
     getData();
 
-  }, [])
+  }, [getData]);
 
-  useEffect(() => {
-    console.log(anime)
-  }, [id, anime])
+
+
 
   function MoreDetailsClick() {
-    setDetails(!details)
+    setDetails(!details);
   }
 
   return (
     <AnimePageContainer>
       {loading && <Loading />}
+      <ComebackButton />
       <Title>{anime.canonicalTitle}</Title>
       <TopWrapper>
         <AnimeBannerWrapper>
@@ -70,8 +73,13 @@ const AnimePage: React.FC = () => {
           </Sinopsis>
         </DetailedScore>
       </TopWrapper>
-      <MoreDetailsWrapper>
-        <MoreDetailsText onClick={MoreDetailsClick}>More details</MoreDetailsText>
+      <BottomWrapper>
+        <MFwrapper>
+          <MoreDetailsText onClick={MoreDetailsClick}>More details</MoreDetailsText>
+          <Favorite>
+            <FavoriteButton id={id} image={animeImage.large} animeName={anime.canonicalTitle} />
+          </Favorite>
+        </MFwrapper>
         <MoreDetails display={details}>
           <p>Episodes: {anime.episodeCount}</p>
           <p>Released: {anime.startDate}</p>
@@ -80,10 +88,10 @@ const AnimePage: React.FC = () => {
           <p>Status: {anime.status}</p>
           <p>Age Rating: {anime.ageRatingGuide}</p>
         </MoreDetails>
-      </MoreDetailsWrapper>
+      </BottomWrapper>
     </AnimePageContainer >
-  )
+  );
 
-}
+};
 
-export default AnimePage;
+export default memo(AnimePage);

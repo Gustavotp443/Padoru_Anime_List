@@ -13,4 +13,4 @@ export const StyledButton = styled.button`
     background-color:${props => shade(0.4, props.theme.colors.spanColor)};
   }
 
-`
+`;

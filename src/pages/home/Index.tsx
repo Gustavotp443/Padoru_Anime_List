@@ -1,10 +1,9 @@
-import React from 'react'
-import Button from '../../components/Button'
-import { AnimeGirl, HomeContainer, WelcomeText, TopWrapper, ButtonContainer } from './home.styles'
-import { Link } from "react-router-dom"
+import React from "react";
+import Button from "../../components/Button";
+import { AnimeGirl, HomeContainer, WelcomeText, TopWrapper, ButtonContainer } from "./home.styles";
+import { Link } from "react-router-dom";
 
 const Home = ({ theme }: any) => {
-  console.log(theme)
   return (
     <HomeContainer>
       <TopWrapper>
@@ -19,7 +18,7 @@ const Home = ({ theme }: any) => {
         </Link>
       </ButtonContainer>
     </HomeContainer>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

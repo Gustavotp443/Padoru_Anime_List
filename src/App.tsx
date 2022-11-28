@@ -1,22 +1,22 @@
-import React from 'react';
-import { ThemeProvider, DefaultTheme } from 'styled-components';
-import usePersistedState from './hooks/usePersistedState';
+import React from "react";
+import { ThemeProvider, DefaultTheme } from "styled-components";
+import usePersistedState from "./hooks/usePersistedState";
 
-import light from './themes/light';
-import dark from './themes/dark';
+import light from "./themes/light";
+import dark from "./themes/dark";
 
-import Footer from './layout/Footer';
-import NavBar from './layout/Navbar';
-import Routering from './Routes/Routes';
-import GlobalStyle from './styles/globalStyles';
+import Footer from "./layout/Footer";
+import NavBar from "./layout/Navbar";
+import Routering from "./Routes/Routes";
+import GlobalStyle from "./styles/globalStyles";
 
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
-  }
+    setTheme(theme.title === "light" ? dark : light);
+  };
 
   return (
     <>

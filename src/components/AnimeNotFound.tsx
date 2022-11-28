@@ -1,5 +1,5 @@
-import React from 'react'
-import { NotFoundText, NotFoundContainer, NotFoundImage } from './AnimeNotFound.styles'
+import React from "react";
+import { NotFoundText, NotFoundContainer, NotFoundImage } from "./AnimeNotFound.styles";
 
 const AnimeNotFound = () => {
   return (
@@ -8,7 +8,7 @@ const AnimeNotFound = () => {
       <NotFoundImage src='/images/Nothing.png' />
       <NotFoundText>Certifique-se de estar digitando corretamente. </NotFoundText>
     </NotFoundContainer>
-  )
-}
+  );
+};
 
-export default AnimeNotFound
+export default AnimeNotFound;

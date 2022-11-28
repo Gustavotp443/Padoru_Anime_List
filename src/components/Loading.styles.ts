@@ -6,4 +6,4 @@ export const LoadingText = styled.h1`
   left: 50vw;
   transform: translateX(-50%);
   top: 15vh;
-`
+`;

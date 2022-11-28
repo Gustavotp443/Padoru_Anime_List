@@ -1,35 +1,36 @@
-import React from 'react'
-import Card from '../../components/Card'
-import Pagination from '../../components/Pagination'
-import SearchBar from '../../components/SearchBar'
-import { CardWrapper, MainContainer, SearchContainer } from './main.styles'
-import { useState, useEffect } from "react"
-import api from '../../services/api'
-import Loading from '../../components/Loading'
-import AnimeNotFound from '../../components/AnimeNotFound'
-import { Link } from 'react-router-dom'
+import React, { memo } from "react";
+import Card from "../../components/Card";
+import Pagination from "../../components/Pagination";
+import SearchBar from "../../components/SearchBar";
+import { CardWrapper, MainContainer, SearchContainer } from "./main.styles";
+import { useState, useEffect } from "react";
+import api from "../../services/api";
+import Loading from "../../components/Loading";
+import AnimeNotFound from "../../components/AnimeNotFound";
+import { Link } from "react-router-dom";
+import { AnimeResp } from "../../types/Types";
 
 
 const Main = () => {
 
   const [search, setSearch] = useState("");
-  const [animeData, setAnimeData] = useState<any>([]);
+  const [animeData, setAnimeData] = useState<AnimeResp[]>([]);
   const [offset, setOffset] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [limit, setLimit] = useState<number>(20);
-  const [total, setTotal] = useState<number>()
+  const [limit,] = useState<number>(20);
+  const [total, setTotal] = useState<number>();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
+    setSearch(e.target.value);
 
-  }
+  };
 
   const nextOffset = () => {
-    setOffset(offset + 20)
-  }
+    setOffset(offset + 20);
+  };
   const prevOffset = () => {
-    setOffset(offset - 20)
-  }
+    setOffset(offset - 20);
+  };
 
 
 
@@ -38,17 +39,18 @@ const Main = () => {
       setLoading(true);
       try {
         let response;
-        { search ? response = await api.get(`/anime?filter[text]=${search}&page[limit]=${limit}&page[offset]=${offset}`) : response = await api.get(`/anime?page[limit]=${limit}&page[offset]=${offset}`) }
-        const { data, meta } = response.data
-        setAnimeData(data)
-        setTotal(parseInt(meta.count))
+        // eslint-disable-next-line no-lone-blocks
+        { search ? response = await api.get(`/anime?filter[text]=${search}&page[limit]=${limit}&page[offset]=${offset}`) : response = await api.get(`/anime?page[limit]=${limit}&page[offset]=${offset}`); }
+        const { data, meta } = response.data;
+        setAnimeData(data);
+        setTotal(parseInt(meta.count));
       } catch (err) {
-        alert("Erro de carregamento:" + err)
+        alert("Erro de carregamento:" + err);
       }
-      setLoading(false)
+      setLoading(false);
     }
-    getAllAnimes()
-  }, [search, offset, total, limit])
+    getAllAnimes();
+  }, [search, offset, total, limit]);
 
   return (
     <MainContainer>
@@ -82,7 +84,7 @@ const Main = () => {
         }
       </>
     </MainContainer >
-  )
-}
+  );
+};
 
-export default Main
+export default memo(Main);

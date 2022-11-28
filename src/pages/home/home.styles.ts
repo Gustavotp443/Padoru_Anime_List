@@ -4,7 +4,7 @@ import { Container } from "../../styles/globalStyles";
 export const HomeContainer = styled(Container)`
   min-height: 75vh;
 
-`
+`;
 
 export const WelcomeText = styled.p`
 font-size:2.8em;
@@ -17,7 +17,7 @@ span{
   border-radius: 5px;
   color:white;
 }
-`
+`;
 
 export const AnimeGirl = styled.img`
      height:${({ theme }) => theme.title === "light" ? "240px" : "320px"}; //400
@@ -39,7 +39,7 @@ width:${({ theme }) => theme.title === "light" ? "276px" : "276px"};   //345
 
 width:${({ theme }) => theme.title === "light" ? "497px" : "414px"};   //345
 }
-`
+`;
 
 export const TopWrapper = styled.div`
   margin:50px 4% 0 4%;
@@ -47,13 +47,13 @@ export const TopWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`
+`;
 
 export const ButtonContainer = styled.div`
   margin-top: 20px;
   text-align: center;
-  position: absolute;
+  position: relative;
   top:80%;
-  right: 50vw;
+  right: 50%;
   transform: translateX(50%);
-`
+`;

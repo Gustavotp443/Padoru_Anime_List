@@ -1,7 +1,8 @@
-import React from 'react'
-import { CardContainer } from './Card.style'
+import React from "react";
+import { CardContainer } from "./Card.style";
+import { AnimeResp } from "../types/Types";
 
-const Card = ({ anime }: any) => {
+const Card = ({ anime }: { anime: AnimeResp }) => {
   return (
     <>
       <CardContainer style={{
@@ -11,7 +12,7 @@ const Card = ({ anime }: any) => {
       </CardContainer>
 
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default React.memo(Card);

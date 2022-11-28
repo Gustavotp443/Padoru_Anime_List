@@ -1,6 +1,5 @@
-/* eslint-disable import/no-anonymous-default-export */
 export default {
-  title: 'dark',
+  title: "dark",
 
   colors: {
     inverse: "#fff",
@@ -10,4 +9,4 @@ export default {
     secondary: "#8257e5",
     spanColor: "#8257e5",
   },
-}
+};

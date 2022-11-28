@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react'
-import { MobileIcon, Nav, NavContainer, LinkNav } from './Navbar.styled'
+import React, { useContext, useState } from "react";
+import { MobileIcon, Nav, NavContainer, LinkNav } from "./Navbar.styled";
 import Switch from "react-switch";
-import { ThemeContext } from 'styled-components';
-import { shade } from 'polished';
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { AiOutlineClose } from "react-icons/ai"
+import { ThemeContext } from "styled-components";
+import { shade } from "polished";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 type Props = {
   toggleTheme(): void
-}
+};
 
 
 
@@ -18,11 +18,11 @@ type Props = {
 const NavBar: React.FC<Props> = ({ toggleTheme }): JSX.Element => {
   const { colors, title } = useContext(ThemeContext);
 
-  const [clicked, setClick] = useState(false)
+  const [clicked, setClick] = useState(false);
 
   const handleClick = () => {
-    setClick(!clicked)
-  }
+    setClick(!clicked);
+  };
 
   return (
     <NavContainer>
@@ -32,8 +32,9 @@ const NavBar: React.FC<Props> = ({ toggleTheme }): JSX.Element => {
         }>{!clicked ? <GiHamburgerMenu /> : <AiOutlineClose />}</MobileIcon>
       <Nav onClick={handleClick} click={clicked}>
         <LinkNav to="/">Home</LinkNav>
-        <LinkNav to="/About">About</LinkNav>
-        <LinkNav to="/Main">My List</LinkNav>
+        <LinkNav to="/about">About</LinkNav>
+        <LinkNav to="/main">My List</LinkNav>
+        <LinkNav to="/fav">Favorites</LinkNav>
       </Nav>
       <Switch
         onChange={toggleTheme}
@@ -47,7 +48,7 @@ const NavBar: React.FC<Props> = ({ toggleTheme }): JSX.Element => {
         onColor={colors.secondary}
       />
     </NavContainer>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

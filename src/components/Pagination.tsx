@@ -1,10 +1,9 @@
-import React from 'react'
-import { PaginationButton, PaginationContainer } from './Pagination.styles'
-import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
+import { PaginationButton, PaginationContainer } from "./Pagination.styles";
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 const Pagination = ({ eventNext, eventPrev, limit, offset, total }: any) => {
 
   const pages = Math.ceil(total / limit);
-  const current = offset ? (offset / limit) + 1 : 1
+  const current = offset ? (offset / limit) + 1 : 1;
 
 
 
@@ -16,7 +15,7 @@ const Pagination = ({ eventNext, eventPrev, limit, offset, total }: any) => {
         <PaginationButton onClick={eventNext} disabled={current === pages}><AiFillCaretRight /></PaginationButton>
       </div>
     </PaginationContainer>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;

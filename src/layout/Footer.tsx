@@ -1,5 +1,5 @@
-import React from 'react'
-import { FooterContainer, FooterText } from './Footer.styles'
+import React from "react";
+import { FooterContainer, FooterText } from "./Footer.styles";
 const Footer = ({ theme }: any) => {
   return (
     <FooterContainer>
@@ -8,7 +8,7 @@ const Footer = ({ theme }: any) => {
         <p>My profile site,<a href="https://gustavo-pardini-dev.vercel.app/" target="_blank" rel="noreferrer noopener"> click here!</a></p>
       </FooterText>
     </FooterContainer>
-  )
-}
+  );
+};
 
 export default Footer;

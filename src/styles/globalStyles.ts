@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -15,10 +15,10 @@ body,html{
   transition: 1s ease;
 }
 
-`
+`;
 export default GlobalStyle;
 
 export const Container = styled.section`
  max-width: 1280px;
  margin: 0 auto;
-`
+`;

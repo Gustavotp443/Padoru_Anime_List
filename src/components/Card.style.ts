@@ -14,12 +14,21 @@ export const CardContainer = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   box-shadow: inset 0px -40px 50px 0px #000;
+
   cursor: pointer;
 
+  @media screen and (max-width:660px){
+    height: 150px;
+    width: 100px;
+  }
   p{
     position: relative;
-    top:90%;
-    font-size: 1;
+    top:80%;
+    font-size: 1em;
+    @media screen and (max-width:660px){
+    font-size:0.5em;
+    top:80%;
   }
-`
+  }
+`;
 

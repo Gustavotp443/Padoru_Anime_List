@@ -9,10 +9,10 @@ display: flex;
   display: flex;
 }
 
-`
+`;
 
 
 export const PaginationButton = styled.button`
 
 
-`
+`;

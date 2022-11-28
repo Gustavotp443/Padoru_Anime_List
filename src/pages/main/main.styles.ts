@@ -4,7 +4,7 @@ import { Container } from "../../styles/globalStyles";
 export const MainContainer = styled(Container)`
   min-height: 80vh;
 
-`
+`;
 
 export const CardWrapper = styled.ul`
 margin-top:40px;
@@ -16,17 +16,19 @@ justify-content:center;
 
 >li{
   margin-top: 20px;
-  flex:1 1 200px;
+  flex:1 1 1 50px;
   margin:10px;
 
+  a{text-decoration: none;}
+
 }
-`
+`;
 export const SearchContainer = styled.div`
   display:flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 
-`
+`;
 
 
