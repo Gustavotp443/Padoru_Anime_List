@@ -32,4 +32,4 @@ O projeto ainda não está 100% Finalizado, falta melhorar o sistema de busca po
 ![anime-projects-page](public/readme/ANIME.png)
 
 # 🌐 Go to the Website !!
-<!-- [Go to WebSite - Click Me !](https://gustavopokemonpokedex.vercel.app) -->
+[Go to WebSite - Click Me !](https://padoru-opal.vercel.app)
