@@ -2,7 +2,7 @@
 
 Esse projeto foi construído com o intuíto de aprimorar minhas habilidades, projeto 100% responsivo utilizando KITSU API para construção de um buscador de animes com filtro de pesquisa e paginação.
 
-#
+
 
 # 🔨 Improvements
 
@@ -15,10 +15,7 @@ Esse projeto foi construído com o intuíto de aprimorar minhas habilidades, pro
 
 - `TypeScript`: Continuo aprimorando meus conhecimentos sobre TypeScript
 
-#
-# 🚧 Building
 
-O projeto ainda não está 100% Finalizado, falta melhorar o sistema de busca pois ainda está ocorrendo glitchs, e melhorias de tipagem dos elementos.
 
 # 📷 Screenshoots
 ![home-light-page](public/readme/HOME_LIGHT.png)

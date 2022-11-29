@@ -9,16 +9,18 @@ import Loading from "../../components/Loading";
 import AnimeNotFound from "../../components/AnimeNotFound";
 import { Link } from "react-router-dom";
 import { AnimeResp } from "../../types/Types";
+import useDebounce from "../../hooks/useDebounce";
 
 
 const Main = () => {
-
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string | null>("");
   const [animeData, setAnimeData] = useState<AnimeResp[]>([]);
   const [offset, setOffset] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [limit,] = useState<number>(20);
   const [total, setTotal] = useState<number>();
+
+  const debouncedSearch = useDebounce(search, 500);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -40,7 +42,7 @@ const Main = () => {
       try {
         let response;
         // eslint-disable-next-line no-lone-blocks
-        { search ? response = await api.get(`/anime?filter[text]=${search}&page[limit]=${limit}&page[offset]=${offset}`) : response = await api.get(`/anime?page[limit]=${limit}&page[offset]=${offset}`); }
+        { debouncedSearch ? response = await api.get(`/anime?filter[text]=${debouncedSearch}&page[limit]=${limit}&page[offset]=${offset}`) : response = await api.get(`/anime?page[limit]=${limit}&page[offset]=${offset}`); }
         const { data, meta } = response.data;
         setAnimeData(data);
         setTotal(parseInt(meta.count));
@@ -50,7 +52,7 @@ const Main = () => {
       setLoading(false);
     }
     getAllAnimes();
-  }, [search, offset, total, limit]);
+  }, [debouncedSearch, offset, total, limit]);
 
   return (
     <MainContainer>

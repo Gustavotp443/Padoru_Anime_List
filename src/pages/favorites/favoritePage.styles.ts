@@ -40,3 +40,12 @@ svg{
   font-size:1.2em;
 }
 `;
+
+
+export const NotFavoriteAnimes = styled.div`
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 4%;
+  padding-top:8rem;
+
+`;

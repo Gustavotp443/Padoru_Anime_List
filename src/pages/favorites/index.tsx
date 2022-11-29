@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FavoriteContext } from "../../common/context/favoriteProvider";
-import { FavoriteContainer, GoToItem, Image, ImageWrapper, Text } from "./favoritePage.styles";
+import { FavoriteContainer, GoToItem, Image, ImageWrapper, NotFavoriteAnimes, Text } from "./favoritePage.styles";
 import { AiOutlineRight } from "react-icons/ai";
 const Favorites = () => {
   const { favorites } = React.useContext(FavoriteContext);
@@ -9,7 +9,7 @@ const Favorites = () => {
 
   return (
     <FavoriteContainer>
-      <ul>{favorites.sort().map((favorite: any) => (
+      <ul>{favorites.length > 0 ? favorites.sort().map((favorite: any) => (
         <li key={favorite.id}>
           <ImageWrapper>
             <Image src={favorite.image} alt={favorite.name} />
@@ -19,7 +19,7 @@ const Favorites = () => {
             <Link to={`/anime/${favorite.id}`}><AiOutlineRight /></Link>
           </GoToItem>
         </li>
-      ))}</ul>
+      )) : <NotFavoriteAnimes><p>Você não favoritou nenhum anime ainda.</p></NotFavoriteAnimes>}</ul>
     </FavoriteContainer >
   );
 };
